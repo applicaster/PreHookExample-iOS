@@ -3,12 +3,12 @@ s.name             = "PrehookExample"
 s.version          = '1.0.0'
 s.summary          = "PrehookExample"
 s.description      = <<-DESC
-ZappRootPlugin2LevelRNMenu container.
+PrehookExample container.
 DESC
 s.homepage         = "https://github.com/applicaster/ZappRootPlugin2LevelRNMenu-iOS"
 s.license          = 'CMPS'
 s.author           = "Applicaster LTD."
-s.source           = { :git => "git@github.com:applicaster/ZappRootPlugin2LevelRNMenu-iOS.git", :tag => s.version.to_s }
+s.source           = { :git => "git@github.com:applicaster/PreHookExample-iOS.git", :tag => s.version.to_s }
 s.platform         = :ios, '9.0'
 s.requires_arc = true
 s.static_framework = false
