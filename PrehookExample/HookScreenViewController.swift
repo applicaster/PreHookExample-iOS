@@ -32,15 +32,7 @@ class HookScreenViewController:UIViewController {
     }
     
     @IBAction func failedAction(_ sender: UIButton) {
-        
-        let currentViewController = self.navigationController?.visibleViewController
         hookManagerDelegate?.didFailHandlerPushed()
-        
-        //call it only fot poping
-//        if let viewControllers = self.navigationController?.viewControllers {
-//            let newViewControllers = viewControllers.filter { $0 != currentViewController }
-//            self.navigationController?.viewControllers = newViewControllers
-//        }
     }
     
     var dataSourceTitle:String {

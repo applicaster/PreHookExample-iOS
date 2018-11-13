@@ -13,14 +13,17 @@ enum HookManagerTypes {
 
 import Foundation
 import ZappPlugins
-public typealias HookCompletion = (Bool, NSError?) -> Void
+
+public typealias HookCompletion = (Bool, NSError?, [String : Any]?) -> Void
 
 protocol HookManagerDelegate {
     func didSuccessHandlerPushed()
     func didFailHandlerPushed()
 }
 
-public class HookManager: NSObject, ZPScreenHookProtocol, HookManagerDelegate {
+public class HookManager: NSObject, ZPScreenHookAdapterProtocol, HookManagerDelegate {
+    public var screenPluginDelegate: ZPPlugableScreenDelegate?
+
     struct Keys {
         static let isScreenPluginKey = "screen"
     }
@@ -32,35 +35,40 @@ public class HookManager: NSObject, ZPScreenHookProtocol, HookManagerDelegate {
     
     var hookCompletion:HookCompletion?
     func didSuccessHandlerPushed() {
+        hookCompletion?(true, nil, nil)
+
         if type == .nonScreen {
             hookViewController?.removeViewFromParentViewController()
         } else if type == .screen,
                 let presentation = screenModel?.style?.object["presentation"] as? String,
-                presentation == "present"{
-                
-            _ = ZAAppConnector.sharedInstance().genericDelegate.closeViewControllerCreatedFromNavigationBar(viewController: ZAAppConnector.sharedInstance().navigationDelegate.topmostModal())
+                presentation == "present" {
+                screenPluginDelegate?.removeScreenPluginFromScreen()
+        } else if type == .screen {
+            screenPluginDelegate?.removeScreenPluginFromNavigationStack()
         }
-        hookCompletion?(true, nil)
     }
+    
     func didFailHandlerPushed() {
    
         if type == .nonScreen {
-            UIView.animate(withDuration: 0.5, animations: {  [weak self] in
-                self?.hookViewController?.view.alpha = 0
-            }) {  [weak self] (success) in
-                self?.hookViewController?.removeViewFromParentViewController()
-            }
+            hookViewController?.removeViewFromParentViewController()
+
         } else if type == .screen,
             let presentation = screenModel?.style?.object["presentation"] as? String,
-            presentation == "present"{
+            presentation == "present" {
+            screenPluginDelegate?.removeScreenPluginFromScreen()
             
-            _ = ZAAppConnector.sharedInstance().genericDelegate.closeViewControllerCreatedFromNavigationBar(viewController: ZAAppConnector.sharedInstance().navigationDelegate.topmostModal())
+        } else if type == .screen {
             
+            //call it only fot poping
+            if isFlowBlocker == true {
+                screenPluginDelegate?.removeScreenPluginFromScreen()
+            }
         }
-        let error = NSError(domain: "In hook somethin failed",
+        let error = NSError(domain: "In hook something failed",
                             code: 0,
                             userInfo: nil)
-        hookCompletion?(false, error)
+        hookCompletion?(false, error, nil)
 
     }
     required public init?(pluginModel:ZPPluginModel,
@@ -80,17 +88,14 @@ public class HookManager: NSObject, ZPScreenHookProtocol, HookManagerDelegate {
     }
     
     public func executeHook(presentationIndex: NSInteger,
-                            taskFinishedWithCompletion: @escaping (Bool, NSError?) -> Void) {
+                            dataDict:[String:Any]?,
+                            taskFinishedWithCompletion: @escaping (Bool, NSError?, [String : Any]?) -> Void) {
         hookCompletion = taskFinishedWithCompletion
 
         if type == .nonScreen {
             let topViewController = ZAAppConnector.sharedInstance().navigationDelegate.topmostModal()
             let screenVC = createScreen()
             topViewController?.addChildViewController(screenVC, to: topViewController?.view)
-            screenVC.view.alpha = 0
-            UIView.animate(withDuration: 0.5, animations: {
-                screenVC.view.alpha = 1
-            }, completion: nil)
         }
         hookViewController?.hookManagerDelegate = self
 
@@ -110,16 +115,17 @@ public class HookManager: NSObject, ZPScreenHookProtocol, HookManagerDelegate {
 
     @objc public func hookPluginDidDisappear(viewController:UIViewController) {
         let error = NSError(domain: "User has closed hook execution failed", code: 0, userInfo: nil)
-    
-        hookCompletion?(false, error)
-        
-        
+        hookCompletion?(false, error, nil)
     }
     
     lazy var bundle = Bundle(for: HookManager.self)
 }
 
 extension HookManager: ZPPluggableScreenProtocol {
+    @objc public var customTitle:String? {
+        return "Test Custom Title"
+    }
+    
     @objc public func createScreen() -> UIViewController {
         hookViewController = HookScreenViewController(nibName: "HookScreenViewController",
                                                       bundle:bundle)
