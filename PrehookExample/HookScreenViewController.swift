@@ -9,6 +9,8 @@
 import UIKit
 import ZappPlugins
 
+
+/// Implamentation of the View Controller for screen plugin
 class HookScreenViewController:UIViewController {
     struct Keys {
         static let titleKey = "title"
@@ -27,6 +29,7 @@ class HookScreenViewController:UIViewController {
         dataSourceLabel.text = dataSourceTitle
         
     }
+    
     @IBAction func successAction(_ sender: UIButton) {
         hookManagerDelegate?.didSuccessHandlerPushed()
     }

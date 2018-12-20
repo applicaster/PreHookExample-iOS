@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		40C3F93921CBF2B600712034 /* ZLScreenModel+HookCustomization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C3F93821CBF2B600712034 /* ZLScreenModel+HookCustomization.swift */; };
+		40C3F93B21CC02CC00712034 /* HookManager+ScreenPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C3F93A21CC02CC00712034 /* HookManager+ScreenPlugin.swift */; };
+		40C3F93D21CC02E800712034 /* HookManager+NonScreenPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C3F93C21CC02E800712034 /* HookManager+NonScreenPlugin.swift */; };
 		40F59F6F217D8FE30037C6D7 /* PrehookExample.h in Headers */ = {isa = PBXBuildFile; fileRef = 40F59F6D217D8FE30037C6D7 /* PrehookExample.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		40F59F77217D90220037C6D7 /* HookScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F59F75217D90220037C6D7 /* HookScreenViewController.swift */; };
 		40F59F78217D90220037C6D7 /* HookScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40F59F76217D90220037C6D7 /* HookScreenViewController.xib */; };
@@ -14,6 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		40C3F93821CBF2B600712034 /* ZLScreenModel+HookCustomization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ZLScreenModel+HookCustomization.swift"; sourceTree = "<group>"; };
+		40C3F93A21CC02CC00712034 /* HookManager+ScreenPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HookManager+ScreenPlugin.swift"; sourceTree = "<group>"; };
+		40C3F93C21CC02E800712034 /* HookManager+NonScreenPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HookManager+NonScreenPlugin.swift"; sourceTree = "<group>"; };
 		40F59F6A217D8FE30037C6D7 /* PrehookExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PrehookExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		40F59F6D217D8FE30037C6D7 /* PrehookExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrehookExample.h; sourceTree = "<group>"; };
 		40F59F6E217D8FE30037C6D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -55,6 +61,9 @@
 			children = (
 				40F59F6D217D8FE30037C6D7 /* PrehookExample.h */,
 				40F59F75217D90220037C6D7 /* HookScreenViewController.swift */,
+				40C3F93821CBF2B600712034 /* ZLScreenModel+HookCustomization.swift */,
+				40C3F93A21CC02CC00712034 /* HookManager+ScreenPlugin.swift */,
+				40C3F93C21CC02E800712034 /* HookManager+NonScreenPlugin.swift */,
 				40F59F79217D936F0037C6D7 /* HookManager.swift */,
 				40F59F76217D90220037C6D7 /* HookScreenViewController.xib */,
 				40F59F6E217D8FE30037C6D7 /* Info.plist */,
@@ -143,8 +152,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40C3F93921CBF2B600712034 /* ZLScreenModel+HookCustomization.swift in Sources */,
 				40F59F7A217D936F0037C6D7 /* HookManager.swift in Sources */,
 				40F59F77217D90220037C6D7 /* HookScreenViewController.swift in Sources */,
+				40C3F93B21CC02CC00712034 /* HookManager+ScreenPlugin.swift in Sources */,
+				40C3F93D21CC02E800712034 /* HookManager+NonScreenPlugin.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
