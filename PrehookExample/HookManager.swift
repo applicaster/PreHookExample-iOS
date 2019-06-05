@@ -95,7 +95,8 @@ extension HookManager: ZPPluggableScreenProtocol {
         hookViewController?.pluginModel = pluginModel
         hookViewController?.screenModel = screenModel
         hookViewController?.dataSourceModel = dataSourceModel
-        
+        hookViewController?.hookManagerDelegate = self
+
         return hookViewController!
     }
 }
