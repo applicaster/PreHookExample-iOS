@@ -2,43 +2,30 @@
   "api": {
     "require_startup_execution": false,
     "class_name": "PrehookExample.HookManager",
-    "modules": [
-
-    ]
+    "modules": []
   },
-  "dependency_repository_url": [
-
-  ],
+  "dependency_repository_url": [],
   "platform": "ios",
-  "author_name": "Anton Kononenko",
-  "author_email": "a.kononenko@applicaster.com",
-  "manifest_version": "1.0.0",
+  "author_name": "Alex Zchut",
+  "author_email": "a.zchut@applicaster.com",
+  "manifest_version": "2.0.0",
   "name": "Prehook Example",
   "description": "Example prehook plugin",
   "type": "general",
   "identifier": "hook",
   "ui_builder_support": true,
-  "dependency_name": "PrehookExample.HookManager",
-  "dependency_version": "0.1.0",
+  "dependency_name": "PrehookExample",
+  "dependency_version": "2.0.0",
   "whitelisted_account_ids": [
-    "57d7bee06466610018000000"
+    "57d7bee06466610018000000",
+    "5c20970320f1c500088842dd"
   ],
-  "min_zapp_sdk": "10.0.1-Dev",
+  "min_zapp_sdk": "12.0.0-Dev",
   "deprecated_since_zapp_sdk": "",
   "unsupported_since_zapp_sdk": "",
   "react_native": false,
+  "preload": true,
   "custom_configuration_fields": [
-    {
-      "type": "dropdown",
-      "key": "presentation",
-      "tooltip_text": "Presentation style",
-      "multiple": false,
-      "options": [
-        "push",
-        "present"
-      ],
-      "default": "push"
-    },
     {
       "type": "checkbox",
       "key": "is_flow_blocker",

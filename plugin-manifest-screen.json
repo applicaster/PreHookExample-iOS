@@ -2,49 +2,66 @@
   "api": {
     "require_startup_execution": false,
     "class_name": "PrehookExample.HookManager",
-    "modules": [
-
-    ]
+    "modules": []
   },
-  "dependency_repository_url": [
-
-  ],
+  "dependency_repository_url": [],
   "platform": "ios",
   "author_name": "Anton Kononenko",
   "author_email": "a.kononenko@applicaster.com",
-  "manifest_version": "1.0.0",
+  "manifest_version": "1.1.0",
   "name": "Prehook Example Hook Screen",
   "description": "Example prehook plugin",
   "type": "general",
   "screen": true,
   "identifier": "hook_screen",
   "ui_builder_support": true,
-  "dependency_name": "PrehookExample.HookManager",
-  "dependency_version": "0.1.0",
+  "dependency_name": "PrehookExample",
+  "dependency_version": "1.1.0",
   "whitelisted_account_ids": [
-    "57d7bee06466610018000000"
+    "57d7bee06466610018000000",
+    "5c20970320f1c500088842dd",
+    "572a0a65373163000b000000",
+    "5a364b49e03b2f000d51a0de"
   ],
-  "min_zapp_sdk": "10.0.1-Dev",
+  "min_zapp_sdk": "11.0.0-Dev",
   "deprecated_since_zapp_sdk": "",
   "unsupported_since_zapp_sdk": "",
   "react_native": false,
-  "custom_configuration_fields": [
-    {
-      "type": "dropdown",
-      "key": "presentation",
-      "tooltip_text": "Presentation style",
-      "multiple": false,
-      "options": [
-        "push",
-        "present"
-      ],
-      "default": "push"
-    },
-    {
-      "type": "checkbox",
-      "key": "is_flow_blocker",
-      "tooltip_text": "Define if hook will block flow in case cancelation",
-      "default": 0
-    }
-  ]
+  "preload": true,
+  "styles": {
+    "fields": [
+      {
+        "type": "tag_select",
+        "key": "presentation",
+        "tooltip_text": "Presentation style",
+        "options": [
+          {
+            "text": "Push",
+            "value": "push"
+          },
+          {
+            "text": "Present",
+            "value": "present"
+          }
+        ],
+        "initial_value": "push"
+      }
+    ]
+  },
+  "general": {
+    "fields": [
+      {
+        "type": "switch",
+        "key": "is_flow_blocker",
+        "tooltip_text": "Define if hook will block flow in case cancelation",
+        "initial_value": false
+      },
+      {
+        "type": "switch",
+        "key": "allow_screen_plugin_presentation",
+        "tooltip_text": "Define if",
+        "initial_value": false
+      }
+    ]
+  }
 }
