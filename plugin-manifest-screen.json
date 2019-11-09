@@ -5,28 +5,29 @@
     "modules": []
   },
   "dependency_repository_url": [],
-  "platform": "ios",
-  "author_name": "Anton Kononenko",
-  "author_email": "a.kononenko@applicaster.com",
-  "manifest_version": "1.1.0",
+  "author_name": "Alex Zchut",
+  "author_email": "a.zchut@applicaster.com",
+  "manifest_version": "3.0.0",
   "name": "Prehook Example Hook Screen",
   "description": "Example prehook plugin",
-  "type": "general",
-  "screen": true,
   "identifier": "hook_screen",
+  "type": "general",
+  "platform": "ios",
   "ui_builder_support": true,
+  "min_zapp_sdk": "13.0.0-Dev",
   "dependency_name": "PrehookExample",
-  "dependency_version": "1.1.0",
+  "dependency_version": "3.0.0",
   "whitelisted_account_ids": [
     "57d7bee06466610018000000",
     "5c20970320f1c500088842dd",
     "572a0a65373163000b000000",
-    "5a364b49e03b2f000d51a0de"
+    "5a364b49e03b2f000d51a0de",
+    "5a4516fa41442c000b0195d6"
   ],
-  "min_zapp_sdk": "11.0.0-Dev",
+  "react_native": false,
+  "screen": true,
   "deprecated_since_zapp_sdk": "",
   "unsupported_since_zapp_sdk": "",
-  "react_native": false,
   "preload": true,
   "styles": {
     "fields": [
@@ -63,5 +64,8 @@
         "initial_value": false
       }
     ]
-  }
+  },
+  "targets": [
+    "mobile"
+  ]
 }
